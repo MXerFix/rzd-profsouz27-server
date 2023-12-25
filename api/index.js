@@ -1,3 +1,3 @@
-const app = require('../index.ts')
+import app from '../index.ts'
 
-module.exports = app
+export default app
