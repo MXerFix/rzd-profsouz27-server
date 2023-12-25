@@ -12,15 +12,15 @@ import errorHandler from './middleware/errorHandle'
 
 const IS_DEV = process.env.NODE_ENV === 'dev'
 const PORT = process.env.PORT
-const app = express()
+export const app = express()
 
 app.use(cors())
 app.use(express.json())
 app.use('/static', express.static(path.resolve(import.meta.dir, './static')))
 app.use(fileUpload({}))
 app.use('/api', router)
-app.get('/api', (req: Request, res: Response) => {
-  return res.json({message: "api"})
+app.get('/', (req: Request, res: Response) => {
+  return res.json({message: "ok"})
 })
 
 // errors
@@ -39,4 +39,4 @@ const start = async () => {
 
 start()
 
-export default app
+// export app
