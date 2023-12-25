@@ -12,7 +12,7 @@ import errorHandler from './middleware/errorHandle'
 
 const IS_DEV = process.env.NODE_ENV === 'dev'
 const PORT = process.env.PORT
-export const app = express()
+const app = express()
 
 app.use(cors())
 app.use(express.json())
@@ -39,4 +39,4 @@ const start = async () => {
 
 start()
 
-// export app
+export default app
