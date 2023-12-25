@@ -1,0 +1,33 @@
+import sequelize from "../db/index";
+import { DataTypes } from "sequelize";
+
+const User = sequelize.define('user', {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  token: { type: DataTypes.STRING, allowNull: false },
+})
+
+const Vote = sequelize.define('vote', {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  // userId: { type: DataTypes.INTEGER },
+  // pictureId: { type: DataTypes.INTEGER },
+})
+
+const Picture = sequelize.define('picture', {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  name: { type: DataTypes.STRING, unique: false, allowNull: true },
+  author: { type: DataTypes.STRING, unique: false, allowNull: true },
+  description: { type: DataTypes.STRING, allowNull: true },
+  img: { type: DataTypes.STRING, allowNull: false },
+})
+
+User.hasOne(Vote, { as: 'vote' })
+Vote.belongsTo(User)
+
+Picture.hasMany(Vote, { as: 'votes' })
+Vote.belongsTo(Picture)
+
+export default {
+  User,
+  Vote,
+  Picture
+}
