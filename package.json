@@ -1,7 +1,6 @@
 {
   "name": "rzd-profsouz27-server",
   "module": "index.ts",
-  "type": "module",
   "scripts": {
     "dev": "env NODE_ENV=dev env PORT=8080 bun --hot index.ts ",
     "prod": "env NODE_ENV=prod env PORT=8080 bun run index.ts "
