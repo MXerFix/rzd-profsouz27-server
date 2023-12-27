@@ -15,12 +15,15 @@ const Vote = sequelize.define('vote', {
 const Picture = sequelize.define('picture', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
   name: { type: DataTypes.STRING, unique: false, allowNull: true },
-  author: { type: DataTypes.STRING, unique: false, allowNull: true },
-  description: { type: DataTypes.STRING, allowNull: true },
-  img: { type: DataTypes.STRING, allowNull: false },
+  author: { type: DataTypes.STRING, allowNull: false },
+  author_age: { type: DataTypes.INTEGER, allowNull: false },
+  author_gender: { type: DataTypes.STRING, allowNull: false },
+  author_by_gender_id: { type: DataTypes.INTEGER, allowNull: false },
+  img: { type: DataTypes.STRING, allowNull: true },
 })
 
-User.hasOne(Vote, { as: 'vote' })
+
+User.hasMany(Vote, { as: 'vote' })
 Vote.belongsTo(User)
 
 Picture.hasMany(Vote, { as: 'votes' })
@@ -29,5 +32,5 @@ Vote.belongsTo(Picture)
 export default {
   User,
   Vote,
-  Picture
+  Picture,
 }

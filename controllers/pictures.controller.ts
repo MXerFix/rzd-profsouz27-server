@@ -10,7 +10,7 @@ class PicturesController {
     try {
       const pictures = await models.Picture.findAll({
         include: [
-          { model: models.Vote, as: 'votes' }
+          { model: models.Vote, as: 'votes' },
         ]
       })
       if (pictures.length && pictures) {
